@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -47,19 +48,26 @@ public class MainActivity extends AppCompatActivity {
                 CreateFile newFile = new CreateFile(view);
             }
         });
+        button1Listen();
         //Used for App Indexing API (Now on tap and search engine)
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+    //Listen to startIntent button
+    public void button1Listen(){
+        Button one = (Button) findViewById(R.id.startIntent);
+        final Context context = this;
+        one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText text = (EditText) findViewById(R.id.inputForIntent);
+                String str = text.getText().toString();
 
-    public void onClick(View view){
-        EditText text = (EditText)findViewById(R.id.inputForIntent);
-        String str = text.getText().toString();
-        Toast.makeText(this,str,Toast.LENGTH_LONG).show();
-        Intent openResultActivity = new Intent(this, ResultActivity.class);
-        openResultActivity.putExtra("valueKey", str);
-        startActivity(openResultActivity);
+                Intent openResultActivity = new Intent(context, ResultActivity.class);
+                openResultActivity.putExtra("valueKey", str);
+                startActivity(openResultActivity);
+            }
+        });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
