@@ -48,25 +48,23 @@ public class MainActivity extends AppCompatActivity {
                 CreateFile newFile = new CreateFile(view);
             }
         });
-        button1Listen();
         //Used for App Indexing API (Now on tap and search engine)
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
     //Listen to startIntent button
-    public void button1Listen(){
-        Button one = (Button) findViewById(R.id.startIntent);
-        final Context context = this;
-        one.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText text = (EditText) findViewById(R.id.inputForIntent);
-                String str = text.getText().toString();
-
-                Intent openResultActivity = new Intent(context, ResultActivity.class);
-                openResultActivity.putExtra("valueKey", str);
-                startActivity(openResultActivity);
-            }
-        });
+    public void button1(){
+        EditText text = (EditText)findViewById(R.id.inputForIntent);
+        String test = "Got here";
+        text.setText(test);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String str = text.getText().toString();
+        Intent openResultActivity = new Intent(this, ResultActivity.class);
+        openResultActivity.putExtra("valueKey", str);
+        startActivity(openResultActivity);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -16,8 +16,8 @@
         android:id="@+id/inputForIntent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="60dip"
-        android:text="Activity"
+        android:minHeight="30dip"
+        android:text="Trial 3"
         android:textSize="20sp" >
     </EditText>
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/inputForIntent"
         android:layout_below="@+id/inputForIntent"
-        android:onClick="onClick"
+        android:onClick="button1"
         android:text="Calling an intent" />
 
 </RelativeLayout>
