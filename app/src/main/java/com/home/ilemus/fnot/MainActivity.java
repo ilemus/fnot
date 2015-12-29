@@ -1,6 +1,7 @@
 package com.home.ilemus.fnot;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -46,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
         });
         //Used for App Indexing API (Now on tap and search engine)
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    public void onClick(View view){
+        EditText text = (EditText)findViewById(R.id.inputForIntent);
+        String str = text.getText().toString();
+        Toast.makeText(this,str,Toast.LENGTH_LONG).show();
+        Intent openResultActivity = new Intent(this, ResultActivity.class);
+        openResultActivity.putExtra("valueKey", str);
+        startActivity(openResultActivity);
     }
 
     @Override
